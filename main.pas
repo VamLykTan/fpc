@@ -244,7 +244,7 @@ begin
         10..99  : Filename:= LabeledEdit1.Text + '-0'  + IntToStr(i) + Version;
       end;
     until not FileExists(Filename + '.vpl');
-    Plan.fData.Geraet:= Filename;
+    Plan._File:= Filename;
     Caption := Caption + ' - ' + Filename + '.vpl';
     Edit[0] := True;
     Edit[1] := False;
@@ -285,7 +285,7 @@ end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  Plan   := TPlan.Create;
+  Plan    := TPlan.Create;
   Lizenz := TLizenz.Create;
   StatusBar1.Panels.Items[0].Text:= Lizenz.fFilename;
 end;

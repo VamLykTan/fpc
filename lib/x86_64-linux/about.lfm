@@ -1,0 +1,19 @@
+object Help: THelp
+  Left = 587
+  Height = 300
+  Top = 124
+  Width = 300
+  Caption = 'Help'
+  ClientHeight = 300
+  ClientWidth = 300
+  OnShow = FormShow
+  LCLVersion = '1.0.10.0'
+  object BarcodeQR1: TBarcodeQR
+    Left = 0
+    Height = 300
+    Top = 0
+    Width = 300
+    StrictSize = True
+    Text = 'Moin MoinTBarcodeQR'
+  end
+end

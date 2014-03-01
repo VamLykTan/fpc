@@ -1,0 +1,193 @@
+object Form2: TForm2
+  Left = 583
+  Height = 495
+  Top = 155
+  Width = 471
+  Caption = 'Form2'
+  ClientHeight = 495
+  ClientWidth = 471
+  KeyPreview = True
+  Menu = MainMenu1
+  OnKeyUp = FormKeyUp
+  OnShow = FormShow
+  Position = poScreenCenter
+  ShowHint = True
+  ShowInTaskBar = stAlways
+  LCLVersion = '1.0.10.0'
+  object LabeledEdit1: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit1
+    EditLabel.AnchorSideRight.Control = LabeledEdit1
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit1
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'Artikelnummer eingeben, falls vorhanden'
+    EditLabel.ParentColor = False
+    TabOrder = 1
+    Visible = False
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit2
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'LabeledEdit2'
+    EditLabel.ParentColor = False
+    TabOrder = 2
+    Visible = False
+  end
+  object LabeledEdit3: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit3
+    EditLabel.AnchorSideRight.Control = LabeledEdit3
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit3
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'LabeledEdit3'
+    EditLabel.ParentColor = False
+    TabOrder = 3
+    Visible = False
+  end
+  object LabeledEdit4: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit4
+    EditLabel.AnchorSideRight.Control = LabeledEdit4
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit4
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'LabeledEdit4'
+    EditLabel.ParentColor = False
+    TabOrder = 4
+    Visible = False
+  end
+  object LabeledEdit5: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit5
+    EditLabel.AnchorSideRight.Control = LabeledEdit5
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit5
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'LabeledEdit5'
+    EditLabel.ParentColor = False
+    TabOrder = 5
+    Visible = False
+  end
+  object LabeledEdit0: TLabeledEdit
+    Left = 15
+    Height = 25
+    Top = 30
+    Width = 300
+    EditLabel.AnchorSideLeft.Control = LabeledEdit0
+    EditLabel.AnchorSideRight.Control = LabeledEdit0
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit0
+    EditLabel.Left = 15
+    EditLabel.Height = 18
+    EditLabel.Top = 9
+    EditLabel.Width = 300
+    EditLabel.Caption = 'Gerätenamen eingeben'
+    EditLabel.ParentColor = False
+    TabOrder = 0
+    Visible = False
+  end
+  object Button1: TButton
+    Left = 15
+    Height = 27
+    Top = 30
+    Width = 64
+    AutoSize = True
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 6
+    Visible = False
+  end
+  object Button2: TButton
+    Left = 15
+    Height = 27
+    Top = 30
+    Width = 64
+    AutoSize = True
+    Caption = 'Button2'
+    OnClick = Button2Click
+    TabOrder = 7
+    Visible = False
+  end
+  object MainMenu1: TMainMenu
+    left = 408
+    top = 280
+    object MenuItem0: TMenuItem
+      Caption = '&Datei'
+      object MenuItem8: TMenuItem
+        Caption = '&Neu'
+        ShortCut = 32846
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'Ö&ffnen'
+        ShortCut = 32847
+      end
+      object MenuItem10: TMenuItem
+        Caption = '-'
+      end
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'New Item3'
+      ShortCut = 32833
+      ShortCutKey2 = 32834
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'New Item4'
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'New Item5'
+    end
+    object MenuItem4: TMenuItem
+      Caption = '&?'
+      object MenuItem5: TMenuItem
+        Caption = '&Info'
+        ShortCut = 16604
+        ShortCutKey2 = 24796
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem7: TMenuItem
+        Caption = '&Hilfe'
+        ShortCut = 49224
+      end
+    end
+  end
+end

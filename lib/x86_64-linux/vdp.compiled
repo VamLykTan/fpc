@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1374722184"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -vewnhi -Fi/home/satan/Programming/Arbeit/Verdrahtungen/lib/x86_64-linux -Fl/opt/gnome/lib -Fu/usr/lib/lazarus/1.0.10/lcl/units/x86_64-linux/gtk2 -Fu/home/satan/Programming/Samlungen/lazarus-ccr-svn-2874/components/lazbarcodes/packages/lib/x86_64-linux -Fu/usr/lib/lazarus/1.0.10/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/1.0.10/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/1.0.10/packager/units/x86_64-linux -Fu/home/satan/Programming/Arbeit/Verdrahtungen/ -FU/home/satan/Programming/Arbeit/Verdrahtungen/lib/x86_64-linux/ -l -dLCL -dLCLgtk2 vdp.lpr"/>
+</CONFIG>

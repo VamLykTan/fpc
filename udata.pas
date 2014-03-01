@@ -37,12 +37,15 @@ Type
       index     : int64;
       end;
   private
-    function    GetKabel: TKabel;
+    function    GetKabel : TKabel;
+    function    GetFile  : String;
+    procedure   SetKabel(Value: TKabel);
+    procedure   Setfile(Value: String);
   public
     constructor Create;
     destructor  Done;
-    procedure   SetKabel(Value: TKabel);
     property    Kabel: TKabel read GetKabel write SetKabel;
+    property    _File: String read GetFile  write SetFile;
 //    property    UpDate
   end;
 
@@ -97,13 +100,15 @@ var Temp : TStringlist;
     i    : Integer;
 begin
   inherited;
-  fData.Filename:= Format('%s', [fData.Geraet + '.vpl']);
-  if FileExists(fData.Filename) then begin
-    Temp:= TStringlist.Create;
-    Temp.LoadFromFile(fData.Filename);
-    i:= Temp.Capacity div 9;
-    SetLength(fKabel, i);
-    end
+  if fData.Filename <> '' then begin
+     fData.Filename:= Format('%s', [fData.Geraet + '.vpl']);
+     if FileExists(fData.Filename) then begin
+       Temp:= TStringlist.Create;
+       Temp.LoadFromFile(fData.Filename);
+       i:= Temp.Capacity div 9;
+       SetLength(fKabel, i);
+       end;
+     end
   else SetLength(fKabel, 10);
 end;
 
@@ -115,6 +120,11 @@ end;
 function TPlan.GetKabel: TKabel;
 begin
 
+end;
+
+function TPlan.GetFile: String;
+begin
+  result:= fData.Filename;
 end;
 
 procedure TPlan.SetKabel(Value: TKabel);
@@ -135,7 +145,11 @@ begin
   finally
     Free;
   end;
+end;
 
+procedure TPlan.Setfile(Value: String);
+begin
+  fData.Filename:= Value;
 end;
 
 end.

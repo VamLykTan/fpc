@@ -1,0 +1,90 @@
+object PlanEdit: TPlanEdit
+  Left = 313
+  Height = 389
+  Top = 72
+  Width = 913
+  Caption = 'PlanEdit'
+  ClientHeight = 389
+  ClientWidth = 913
+  LCLVersion = '1.0.10.0'
+  object StringGrid1: TStringGrid
+    Left = 0
+    Height = 368
+    Top = 0
+    Width = 913
+    Align = alClient
+    ColCount = 9
+    Columns = <    
+      item
+        Title.Caption = 'Quellkontakt'
+        Width = 95
+      end    
+      item
+        Title.Caption = 'Kontaktart Quelle'
+        Width = 125
+      end    
+      item
+        Title.Caption = 'Leitungstyp'
+        Width = 85
+      end    
+      item
+        Title.Caption = 'Leitungsquerschnitt'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'Leitungslänge'
+        Width = 100
+      end    
+      item
+        Title.Caption = 'Leitungsfarbe'
+        Width = 100
+      end    
+      item
+        Title.Caption = 'Kontaktart Zeil'
+        Width = 110
+      end    
+      item
+        Title.Caption = 'Zielkontakt'
+        Width = 85
+      end>
+    ScrollBars = ssAutoHorizontal
+    TabOrder = 0
+    ColWidths = (
+      64
+      95
+      125
+      85
+      145
+      100
+      100
+      110
+      85
+    )
+    Cells = (
+      4
+      0
+      1
+      '001'
+      0
+      2
+      '002'
+      0
+      3
+      '003'
+      0
+      4
+      '004'
+    )
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 21
+    Top = 368
+    Width = 913
+    Panels = <    
+      item
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+end
