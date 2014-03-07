@@ -1,0 +1,27 @@
+object Info: TInfo
+  Left = 587
+  Height = 300
+  Top = 124
+  Width = 300
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  AutoSize = True
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'Info'
+  ClientHeight = 300
+  ClientWidth = 300
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
+  OnShow = FormShow
+  LCLVersion = '1.0.10.0'
+  object BarcodeQR1: TBarcodeQR
+    Left = 0
+    Height = 300
+    Top = 0
+    Width = 300
+    StrictSize = True
+    Text = 'Moin MoinTBarcodeQR'
+  end
+end
