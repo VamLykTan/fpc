@@ -42,11 +42,9 @@ Type
   public
     constructor Create;
     destructor  Done;
-    procedure   GetKabel(index: Int64; Value: array of TKabel);
-    procedure   SetKabel(Value: TKabel);
-    property    Kabel: TKabel {read fKabel }write SetKabel;
+    procedure   GetKabel;
+    procedure   SetKabel;
     property    _File: String read GetFile  write SetFile;
-//    property    UpDate
   end;
 
 implementation
@@ -105,14 +103,14 @@ begin
      if FileExists(fData.Filename) then begin
        Temp:= TStringlist.Create;
        Temp.LoadFromFile(fData.Filename);
-       i:= Temp.Capacity div 9;
+       i:= Temp.Count div 9;
        SetLength(fKabel, i);
        fData.index:= i;
        end;
      end
   else begin
-    SetLength(fKabel, 10);
-    fData.index:= 10;
+    SetLength(fKabel, 2);
+    fData.index:= 2;
   end;
 end;
 
@@ -121,34 +119,39 @@ begin
   inherited;
 end;
 
-procedure TPlan.GetKabel(index: Int64; Value: array of TKabel);
+procedure TPlan.GetKabel;
 var Temp : TStringlist;
     s: String;
-    a: int64;
+    a, b: Word;
 begin
-  fData.Filename := Format('%s', [fData.Geraet + 'vpl']);
+  fData.Filename := Format('%s', [fData.Geraet + '.vpl']);
+  B:= 0;
   if FileExists(fData.Filename) then begin
-    Temp := TStringlist.Create;
-    Temp.LoadFromFile(fData.Filename);
-    a:= (Temp.Capacity div 9);
-    Temp.Free;
     with TIniFile.Create(fData.Filename) do try
-      s:= Format('[%s]', ['Leitung'+IntToStr(a)]);
-      for A:= 0 to (Temp.Capacity div 9) do begin
-          Value[a, 0] := ReadString(s, 'Quelle'              , '');
-          Value[a, 1] := ReadString(s, 'Kontaktart Quelle'   , '');
-          Value[a, 2] := ReadString(s, 'Leitungstyp'         , '');
-          Value[a, 3] := ReadString(s, 'Leitungsquerschnitt' , '');
-          Value[a, 4] := ReadString(s, 'Leitungslänge'       , '');
-          Value[a, 5] := ReadString(s, 'Leitungsfarbe'       , '');
-          Value[a, 6] := ReadString(s, 'Kontaktart Ziel'     , '');
-          Value[a, 7] := ReadString(s, 'Zielkontakt'         , '');
+      Temp:= TStringList.Create; try
+        ReadSections(Temp);
+        SetLength(fKabel, Temp.Count);
+        for A:= 0 to Temp.Count-1 do begin
+          s:= Format('[%s]', ['Leitung'+IntToStr(a)]);
+          if (ReadString(s, 'Quelle', '') <> '') then begin
+            fKabel[b, 0] := ReadString(s, 'Quelle'              , '');
+            fKabel[b, 1] := ReadString(s, 'Kontaktart Quelle'   , '');
+            fKabel[b, 2] := ReadString(s, 'Leitungstyp'         , '');
+            fKabel[b, 3] := ReadString(s, 'Leitungsquerschnitt' , '');
+            fKabel[b, 4] := ReadString(s, 'Leitungslänge'       , '');
+            fKabel[b, 5] := ReadString(s, 'Leitungsfarbe'       , '');
+            fKabel[b, 6] := ReadString(s, 'Kontaktart Ziel'     , '');
+            fKabel[b, 7] := ReadString(s, 'Zielkontakt'         , '');
+            inc(b);
+          end;
+        end;
+      finally
+        Temp.Free;
       end;
     finally
       Free;
     end;
   end;
-//  fKabel[fData.index] := GetKabel;
 end;
 
 function TPlan.GetFile: String;
@@ -156,25 +159,30 @@ begin
   result:= fData.Filename;
 end;
 
-procedure TPlan.SetKabel(Value: TKabel);
+procedure TPlan.SetKabel;
 var s: String;
     a: int64;
 begin
   fData.Filename:= Format('%s', [fData.Geraet + '.vpl']);
   if FileExists(fData.Filename) then DeleteFile(fData.Filename);
   with TIniFile.Create(fData.Filename) do try
-    for a := 0 to fData.index do begin
+    for a := low(fKabel) to High(fKabel) do begin
       s:= Format('[%s]', ['Leitung'+IntToStr(a)]);
-      WriteString(s, 'Quelle'              , Value[0]);
-      WriteString(s, 'Kontaktart Quelle'   , Value[1]);
-      WriteString(s, 'Leitungstyp'         , Value[2]);
-      WriteString(s, 'Leitungsquerschnitt' , Value[3]);
-      WriteString(s, 'Leitungslänge'       , Value[4]);
-      WriteString(s, 'Leitungsfarbe'       , Value[5]);
-      WriteString(s, 'Kontaktart Ziel'     , Value[6]);
-      WriteString(s, 'Zielkontakt'         , Value[7]);
+      WriteString(s, 'Quelle'              , fKabel[a, 0]);
+      WriteString(s, 'Kontaktart Quelle'   , fKabel[a, 1]);
+{      if ((fKabel[a, 2] = 'm') or (fKabel[a, 2] = 'M')) then
+        WriteString(s, 'Leitungstyp'         , 'Mantelleitung');
+      if ((fKabel[a, 2] = 'l') or (fKabel[a, 2] = 'L')) then
+        WriteString(s, 'Leitungstyp'         , 'Schaltlitze');}
+      WriteString(s, 'Leitungstyp'         , fKabel[a, 2]);
+      WriteString(s, 'Leitungsquerschnitt' , fKabel[a, 3]);
+      WriteString(s, 'Leitungslänge'       , fKabel[a, 4]);
+      WriteString(s, 'Leitungsfarbe'       , fKabel[a, 5]);
+      WriteString(s, 'Kontaktart Ziel'     , fKabel[a, 6]);
+      WriteString(s, 'Zielkontakt'         , fKabel[a, 7]);
       end;
     finally
+      fData.index:= a;
       Free;
     end;
 end;
